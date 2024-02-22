@@ -1,29 +1,34 @@
-import './App.css';
+import React, {useState} from 'react'
+import CalendraComponent from './CalendraComponent'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
+
+
+const colorOptions = [
+  {value: 'yellow', label: 'yellow'},
+  {value: 'green', label: 'green'},
+]
+;
+const App =  () =>{
+
+  const[selectedDate, setSelectedDate] = useState(null)
+  const[selectedColor, setSelectedColor] = useState(null)
+
+  const handleDateChange = (date) =>{
+    setSelectedDate(date);
+  }
+  const handleColorChange = (color) =>{
+    setSelectedColor(color.value);
+  }
+
+
+  return(
+    <div>
+      <CalendraComponent 
+        onDateChange={handleDateChange}
+        selectedDate={selectedDate}
+        colorOptions={colorOptions}
+      />
     </div>
-  );
+  )
 }
-
 export default App;
